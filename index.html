@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Lookup</title>
+</head>
+<body>
+    <h2>Search Student Score</h2>
+
+    <input type="text" id="name" placeholder="Enter student name">
+    <button onclick="search()">Search</button>
+
+    <p id="result"></p>
+
+    <script>
+        async function search() {
+            const name = document.getElementById("name").value;
+
+            const response = await fetch("http://18.143.126.64:5000/student?name=" + name);
+            const data = await response.json();
+
+            document.getElementById("result").innerText = 
+                data.found ? `Score: ${data.score}` : "Student not found";
+        }
+    </script>
+</body>
+</html>
