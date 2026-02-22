@@ -26,11 +26,12 @@ def get_student():
     row = cursor.fetchone()
     connection.close()
     if row:
-        return jsonify({"found": True, "score": row[0]})
+        return jsonify({"found": True, "score": row["score"]})
     else:
         return jsonify({"found": False})
 
 app.run(host="0.0.0.0", port=5000)
+
 
 
 
